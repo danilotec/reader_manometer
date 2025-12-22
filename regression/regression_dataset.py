@@ -3,7 +3,7 @@ from ultralytics import YOLO
 import cv2
 import os
 
-model = YOLO("runs/detect/train/weights/best.pt")
+model = YOLO("runs/detect/train2/weights/best.pt")
 
 input_dir = "dataset/raw_images"
 output_dir = "dataset/regression_dataset/images"
@@ -20,5 +20,5 @@ for img_name in os.listdir(input_dir):
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             crop = img[y1:y2, x1:x2]
             crop = cv2.resize(crop, (224, 224))
-            name = img_name.replace(".png", "").replace(".jpg", "")
+            name = img_name.replace(".png", "").replace(".jpg", "").replace('.jpeg', '')
             cv2.imwrite(f"{output_dir}/{name}_{i}.jpg", crop)
