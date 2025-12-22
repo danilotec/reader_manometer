@@ -1,13 +1,13 @@
 from regression import Manometer
+from utils import angle_to_percent, get_volume
 
 man = Manometer("runs/detect/train/weights/best.pt")
-angle = man.get_angle("dataset/regression_dataset/images/image_1.jpg")
+angle = man.get_angle("dataset/regression_dataset/images/image_3.jpg")
 
-def angle_to_percent(angle):
-    if angle < 135:
-        angle += 360
 
-    percentual = (angle - 135) / 270
-    return max(0.0, min(1.0, percentual))
+if angle: 
+    percent = angle_to_percent(angle)
+    print(percent)
 
-print(angle_to_percent(angle))
+    print(get_volume(percent, 25))
+

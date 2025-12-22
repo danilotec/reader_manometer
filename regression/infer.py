@@ -10,7 +10,7 @@ class Manometer:
         self.reg.load_state_dict(torch.load("regressor.pt"))
         self.reg.eval()
 
-    def get_angle(self, filename: str):
+    def get_angle(self, filename: str) -> float | None:
         img = cv2.imread(filename)
         result = self.yolo(img)[0] #type: ignore
 
