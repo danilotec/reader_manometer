@@ -17,7 +17,7 @@ class CropImage:
         print(img_name)
         for i, box in enumerate(results.boxes):
             cls = int(box.cls[0])
-            if cls == 1:  # Needle
+            if cls == 0:  # Needle
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 crop = img[y1:y2, x1:x2]
                 crop = cv2.resize(crop, (224, 224))
