@@ -20,7 +20,7 @@ Projetado para aplicações **industriais, hospitalares e IoT**, eliminando a ne
 ## 📦 Instalação
 
 ```bash
-git clone https://github.com/danilotec/reader-manometer.git
+git clone https://github.com/danilotec/reader_manometer.git
 pip install -r reader_manometer/requirements.txt
 ```
 
