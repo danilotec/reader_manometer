@@ -168,16 +168,6 @@ Usado para calcular:
 
 ---
 
-## 🛣️ Roadmap
-
-* [ ] Interface CLI (`reader-manometer image.jpg`)
-* [ ] API REST (FastAPI)
-* [ ] Suporte a múltiplos manômetros
-* [ ] Exportação MQTT / HTTP
-* [ ] Dashboard web
-
----
-
 ## 📄 Licença
 
 MIT License
