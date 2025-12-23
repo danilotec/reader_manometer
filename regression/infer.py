@@ -4,8 +4,8 @@ from ultralytics import YOLO #type: ignore
 from .model import AngleRegressor
 
 class Manometer:
-    def __init__(self, model: str, regressor: str) -> None: 
-        self.yolo = YOLO(model)
+    def __init__(self, yolo: YOLO, regressor: str) -> None: 
+        self.yolo = yolo
         self.reg = AngleRegressor()
         self.reg.load_state_dict(torch.load(regressor))
         self.reg.eval()

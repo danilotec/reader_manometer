@@ -1,8 +1,9 @@
-from regression import Manometer
-from utils import angle_to_percent, get_volume
+from .regression import Manometer, YOLO
+from .utils import angle_to_percent, get_volume
 
+yolo = YOLO("runs/detect/train2/weights/best.pt")
 man = Manometer(
-    model="runs/detect/train2/weights/best.pt",
+    yolo=yolo,
     regressor="regressor.pt"
     )
 
