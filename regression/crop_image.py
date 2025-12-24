@@ -10,7 +10,7 @@ class CropImage:
         self.output_dir = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def generate_crop(self, img_name: str) -> None:
+    def generate_crop(self, img_name: str, classe: int = 1) -> None:
         img = cv2.imread(os.path.join(self.input_dir, img_name))
         
         if img is not None:
@@ -19,7 +19,7 @@ class CropImage:
             print(img_name)
             for i, box in enumerate(results.boxes):
                 cls = int(box.cls[0])
-                if cls == 1:  # Needle
+                if cls == classe:  # Needle
                     x1, y1, x2, y2 = map(int, box.xyxy[0])
                     crop = img[y1:y2, x1:x2]
                     crop = cv2.resize(crop, (224, 224))
