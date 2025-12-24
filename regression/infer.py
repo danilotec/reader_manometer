@@ -44,7 +44,7 @@ class Manometer:
         percentual = (angle - 135) / 270
         return max(0.0, min(1.0, percentual))
     
-    def get_volume(self, scale: float) -> float:
+    def get_real_value(self, scale: float) -> float:
         '''    
         :param percent: se refere a porcentagem do circulo do manometro
         esse valor deve vir da função angle_to_percent 
