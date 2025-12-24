@@ -34,8 +34,8 @@ class NeedleDataset(Dataset):
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 dataset = NeedleDataset(
-    csv_file="dataset/regression_dataset/labels.csv",
-    img_dir="dataset/regression_dataset/images"
+    csv_file="reader_manometer/dataset/regression_dataset/labels.csv",
+    img_dir="reader_manometer/dataset/regression_dataset/images"
 )
 
 loader = DataLoader(dataset, batch_size=16, shuffle=True)

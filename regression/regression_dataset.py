@@ -3,10 +3,10 @@ from ultralytics.models import YOLO
 import cv2
 import os
 
-model = YOLO("runs/detect/train2/weights/best.pt")
+model = YOLO("reader_manometer/runs/detect/train2/weights/best.pt")
 
-input_dir = "dataset/raw_images"
-output_dir = "dataset/regression_dataset/images"
+input_dir = "reader_manometer/dataset/raw_images"
+output_dir = "reader_manometer/dataset/regression_dataset/images"
 os.makedirs(output_dir, exist_ok=True)
 
 for img_name in os.listdir(input_dir):
@@ -18,7 +18,7 @@ for img_name in os.listdir(input_dir):
         print(img_name)
         for i, box in enumerate(results.boxes):
             cls = int(box.cls[0])
-            if cls == 1:  # Needle
+            if cls == 0:  # Needle
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 crop = img[y1:y2, x1:x2]
                 crop = cv2.resize(crop, (224, 224))
