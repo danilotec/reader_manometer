@@ -29,7 +29,7 @@ def create_crop(image_path: str, crop_class: int) -> list[str] | None:
     return crop.generate_crop(image_path, crop_class)
 
 
-def process_volum(crop_image_path: str) -> tuple:
+def process_volum(crop_image_path: str, manometer_scale: int) -> tuple:
     ''' 
     Retorna uma Tupla(list[angles], volum)
     '''
@@ -40,7 +40,7 @@ def process_volum(crop_image_path: str) -> tuple:
     angles = man.get_angle(filename=crop_image_path)
 
     if angles:
-        volum = round(man.get_real_value(800), 2)
+        volum = round(man.get_real_value(manometer_scale), 2)
         return angles, volum
     
     return None, None
@@ -53,8 +53,8 @@ async def get_crops_names(image_path: str, crop_class: int) -> list[str] | None:
     return None
 
 
-async def get_angles_volum(crop_image_path: str) -> tuple:
-    angles, volum = await asyncio.to_thread(lambda: process_volum(crop_image_path))
+async def get_angles_volum(crop_image_path: str, manometer_scale: int) -> tuple:
+    angles, volum = await asyncio.to_thread(lambda: process_volum(crop_image_path, manometer_scale))
 
     if angles:
         return angles, volum
